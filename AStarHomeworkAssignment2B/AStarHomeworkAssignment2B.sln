@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AStarHomeworkAssignment2B", "AStarHomeworkAssignment2B\AStarHomeworkAssignment2B.pyproj", "{39B61618-AF8D-4495-A3C9-AEBAE1BD05FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39B61618-AF8D-4495-A3C9-AEBAE1BD05FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B61618-AF8D-4495-A3C9-AEBAE1BD05FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AF24D21-D869-4DDF-AAE2-7A71A7C6355E}
+	EndGlobalSection
+EndGlobal
