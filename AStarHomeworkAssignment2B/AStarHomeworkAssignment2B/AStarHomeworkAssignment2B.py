@@ -10,20 +10,76 @@ class Graph:
 
     def __init__(self, adjacency_list):
         self.adjacency_list = adjacency_list
+        self.H = None
+        self.timeOfDay = None
 
     def get_neighbors(self, v):
         return self.adjacency_list[v]
 
     # heuristic function with equal values for all nodes
     def h(self, n):
-        H = {
-            'A': 1,
-            'B': 1,
-            'C': 1,
-            'D': 1
-        }
+        if(self.timeOfDay == "yes"):
+            self.H = {
+                "vanderbilt_45th": 1,
+                "vanderbilt_44th": 1,
+                "vanderbilt_43rd": 1,
+                "vanderbilt_42nd": 4,
+                "madison_45th": 1,
+                "madison_44th": 1,
+                "madison_43rd": 1,
+                "madison_42nd": 4,
+                "madison_41st": 1,
+                "madison_40th": 1,
+                "madison_39th": 6,
+                "5th_45th": 4,
+                "5th_44th": 4,
+                "5th_43rd": 4,
+                "5th_42nd": 4,
+                "5th_41st": 4,
+                "5th_40th": 4,
+                "5th_39th": 6,
+                "5th_38th": 4,
+                "ofTheAmericas_44th": 1,
+                "ofTheAmericas_43rd": 1,
+                "ofTheAmericas_42nd": 4,
+                "ofTheAmericas_41st": 1,
+                "ofTheAmericas_40th": 1,
+                "ofTheAmericas_39th": 6,
+                "ofTheAmericas_38th": 1,
+                "ofTheAmericas_37th": 1
+            }
+        else:
+            self.H = {
+                "vanderbilt_45th": 1,
+                "vanderbilt_44th": 1,
+                "vanderbilt_43rd": 1,
+                "vanderbilt_42nd": 1,
+                "madison_45th": 1,
+                "madison_44th": 1,
+                "madison_43rd": 1,
+                "madison_42nd": 1,
+                "madison_41st": 1,
+                "madison_40th": 1,
+                "madison_39th": 1,
+                "5th_45th": 1,
+                "5th_44th": 1,
+                "5th_43rd": 1,
+                "5th_42nd": 1,
+                "5th_41st": 1,
+                "5th_40th": 1,
+                "5th_39th": 1,
+                "5th_38th": 1,
+                "ofTheAmericas_44th": 1,
+                "ofTheAmericas_43rd": 1,
+                "ofTheAmericas_42nd": 1,
+                "ofTheAmericas_41st": 1,
+                "ofTheAmericas_40th": 1,
+                "ofTheAmericas_39th": 1,
+                "ofTheAmericas_38th": 1,
+                "ofTheAmericas_37th": 1
+            }
 
-        return H[n]
+        return self.H[n]
 
     def a_star_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
@@ -100,10 +156,46 @@ class Graph:
         print('Path does not exist!')
         return None
 
+
 adjacency_list = {
-'A': [('B', 1), ('C', 3), ('D', 7)],
-'B': [('D', 5)],
-'C': [('D', 12)]
+    'vanderbilt_45th': [('madison_45th', 1), ('vanderbilt_44th', 1)],
+    'vanderbilt_44th': [('vanderbilt_43rd', 1)],
+    'vanderbilt_43rd': [('vanderbilt_42nd', 1), ('madison_43rd', 1)],
+    'vanderbilt_42nd': [('madison_42nd', 1)],
+    'madison_45th': [('5th_45th', 2)],
+    'madison_44th': [('vanderbilt_44th', 1), ('madison_45th', 1)],
+    'madison_43rd': [('madison_44th', 1), ('5th_43rd', 2)],
+    'madison_42nd': [('madison_43rd', 1), ('5th_42nd', 2)],
+    'madison_41st': [('madison_42nd', 1)],
+    'madison_40th': [('madison_41st', 1)],
+    'madison_39th': [('madison_39th', 1), ('5th_39th', 2)],
+    '5th_45th': [('5th_44th', 1)],
+    '5th_44th': [('madison_44th', 2), ('5th_43rd', 1)],
+    '5th_43rd': [('ofTheAmericas_43rd', 4), ('5th_42nd', 1)],
+    '5th_42nd': [('ofTheAmericas_42nd', 4), ('5th_41st', 1)],
+    '5th_41st': [('madison_41st', 2), ('5th_40th', 1)],
+    '5th_40th': [('madison_40th', 2), ('5th_39th', 1)],
+    '5th_39th': [('ofTheAmericas_39th', 4), ('5th_38th', 1)],
+    '5th_38th': [],
+    'ofTheAmericas_44th': [('5th_44th', 4)],
+    'ofTheAmericas_43rd': [('ofTheAmericas_44th', 1)],
+    'ofTheAmericas_42nd': [('ofTheAmericas_43rd', 1)],
+    'ofTheAmericas_41st': [('ofTheAmericas_42nd', 1)],
+    'ofTheAmericas_40th': [('5th_40th', 4), ('ofTheAmericas_41st', 1)],
+    'ofTheAmericas_39th': [('ofTheAmericas_40th', 1)],
+    'ofTheAmericas_38th': [('5th_38th', 4), ('ofTheAmericas_39th', 1)]
 }
+
+
 graph1 = Graph(adjacency_list)
-print(graph1.a_star_algorithm('A', 'D'))
+
+graph1.timeOfDay = input("Is the time of day between 2 PM and 7 PM (Type yes or no) (NOTE: YOUR ANSWER HERE CHANGES NOTHING)? ")
+
+
+graph1.timeOfDay = "yes"
+graph1.a_star_algorithm('vanderbilt_45th', 'ofTheAmericas_39th')
+
+print()
+
+graph1.timeOfDay = "no"
+graph1.a_star_algorithm('vanderbilt_45th', 'ofTheAmericas_39th')
